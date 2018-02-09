@@ -10,14 +10,14 @@ resultDir <- "D:\\temp\\"
 sourceCode <- read_html(url)
 
 aTags <- html_nodes(sourceCode, "a")
-aTags.rar <- grep(".rar", aTags, value=TRUE)
+aTagsRAR <- grep(".rar", aTags, value=TRUE)
 
 pattern <- '<a href([^files]*)'
-aTags.rar <- gsub(pattern, "",aTags.rar)
+aTagsRAR <- gsub(pattern, "",aTagsRAR)
 pattern <- '\">.*$'
-relativeLinks = gsub(pattern, "", aTags.rar)
+relativeLinks <- gsub(pattern, "", aTagsRAR)
 
-absoluteLinks=paste0(absoluteUrl, relativeLinks)
+absoluteLinks <- paste0(absoluteUrl, relativeLinks)
 
 # DOWNLOAD ALL FILES ----------------------------------------------------------
 for(i in seq_along(absoluteLinks)){
